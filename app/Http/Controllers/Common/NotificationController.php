@@ -76,11 +76,9 @@ class NotificationController extends Controller
      */
     public function markAllRead($id)
     {
-        $markasread = UserNotification::where('user_id', '=', \Auth::user()->id)->where('is_read', '=', '0')->get();
-        foreach ($markasread as $mark) {
-            $mark->is_read = '1';
-            $mark->save();
-        }
+        UserNotification::where('user_id', '=', \Auth::user()->id)
+            ->where('is_read', '=', 0)
+            ->update(['is_read' , 1]);
 
         return 1;
     }

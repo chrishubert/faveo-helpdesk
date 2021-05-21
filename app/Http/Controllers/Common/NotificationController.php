@@ -78,7 +78,7 @@ class NotificationController extends Controller
     {
         UserNotification::where('user_id', '=', \Auth::user()->id)
             ->where('is_read', '=', 0)
-            ->update(['is_read' , 1]);
+            ->update(['is_read' => 1]);
 
         return 1;
     }

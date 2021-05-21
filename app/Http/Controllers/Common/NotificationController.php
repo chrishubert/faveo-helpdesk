@@ -163,7 +163,7 @@ class NotificationController extends Controller
                 $query->select('id', 'ticket_number');
             },
         ])
-            ->where('is_read', '=', 0)
+            // ->where('is_read', '=', 0)
             ->where('user_id', '=', \Auth::user()->id);
 
         return $notifications;

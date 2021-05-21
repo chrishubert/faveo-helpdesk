@@ -50,7 +50,7 @@ class AgentLayout
      */
     public function compose(View $view)
     {
-        $notifications = \App\Http\Controllers\Common\NotificationController::getNotifications();//->where('is_unread', '=', 0);
+        $notifications = \App\Http\Controllers\Common\NotificationController::getNotifications()->where('is_read', '=', 0);
         $view->with([
             'company' => $this->company,
             'notifications' => $notifications,

@@ -214,7 +214,7 @@ class ApiController extends Controller
             } else {
                 $user_email = '';
                 $user_code = substr($user_id, 0, 2) ;
-                $user_phone = $user_id;
+                $user_phone = ltrim($user_id, $user_code);
             }
 
             dump($user_phone);
@@ -222,7 +222,7 @@ class ApiController extends Controller
 
             $this->request->merge([
                 'subject' => "Qiscus ticket from $user_id",
-                'body' => $qiscusBody['notes'] ?? '',
+                'body' => $qiscusBody['notes'] ?? '-',
                 'assignto' => $assignee_id,
                 'source' => 'Qiscus',
                 'first_name' => $qiscusBody['customer']['name'] ?? '',

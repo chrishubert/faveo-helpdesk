@@ -119,7 +119,7 @@ class TicketController extends Controller
 
             $source_name = $request->input('source') ? $request->input('source') : 'agent';
             $source = Ticket_source::where('name', '=', $source_name)->first();
-            $source = $source ?  $source : Ticket_source::where('name', '=', 'Agent')->first();
+            $source = $source ?: Ticket_source::where('name', '=', 'Agent')->first();
 
             $headers = null;
             $help = Help_topic::where('id', '=', $helptopic)->first();
@@ -1056,7 +1056,7 @@ class TicketController extends Controller
                     $form_value = new Ticket_Form_Data();
                     $form_value->ticket_id = $id;
                     $form_value->title = $key;
-                    $form_value->content = $form_details;
+                    $form_value->content = $form_details ?? '-';
                     $form_value->save();
                 }
             }

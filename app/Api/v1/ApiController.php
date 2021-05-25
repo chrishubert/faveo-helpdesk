@@ -197,9 +197,10 @@ class ApiController extends Controller
             $agent_email = $qiscusBody["agent"]["email"] ?? null;
 
             // Get Assignee
-            if ($agent_email && $agent = User::where('email', $agent_email)->first())
-                $assignee_id = $agent->id;
-            else
+            if ($agent_email) {
+                $agent = User::where('email', $agent_email)->first();
+                $assignee_id = $agent ? $agent->id : 1;
+            } else
                 $assignee_id = 1;
 
             $PhpMailController = new \App\Http\Controllers\Common\PhpMailController();
@@ -207,13 +208,13 @@ class ApiController extends Controller
             $core = new CoreTicketController($PhpMailController, $NotificationController);
 
             $user_id = $qiscusBody['customer']['user_id'] ?? '';
-            if(str_contains($qiscusBody['customer']['user_id'] , '@')){
+            if (str_contains($qiscusBody['customer']['user_id'], '@')) {
                 $user_email = $user_id;
                 $user_phone = '';
                 $user_code = '';
             } else {
                 $user_email = '';
-                $user_phone = substr($user_id, 0, 2) ;
+                $user_phone = substr($user_id, 0, 2);
                 $user_code = $user_id;
             }
 

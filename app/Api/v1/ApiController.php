@@ -213,8 +213,8 @@ class ApiController extends Controller
                 $user_code = '';
             } else {
                 $user_email = '';
-                $user_phone = substr($user_id, 0, 2) ;
-                $user_code = $user_id;
+                $user_code = substr($user_id, 0, 2) ;
+                $user_phone = $user_id;
             }
 
             dump($user_phone);

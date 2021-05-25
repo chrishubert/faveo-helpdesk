@@ -14,7 +14,7 @@ $status = $segments[2];
         var last = true;
         var sort = [[6, "desc"]];
         oTable = myFunction();
-        
+
         $("select[name=label]").change(function () {
             $("#chumper").dataTable().fnDestroy();
             myFunction();

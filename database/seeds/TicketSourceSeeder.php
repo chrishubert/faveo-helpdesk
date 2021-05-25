@@ -22,5 +22,6 @@ class TicketSourceSeeder extends Seeder
         Ticket_source::create(['name' => 'Twitter', 'value' => 'Twitter', 'css_class' => 'fa fa-twitter']);
         Ticket_source::create(['name' => 'Call', 'value' => 'Call', 'css_class' => 'fa fa-phone']);
         Ticket_source::create(['name' => 'Chat', 'value' => 'Chat', 'css_class' => 'fa fa-comment']);
+        Ticket_source::create(['name' => 'Qiscus', 'value' => 'Qiscus', 'css_class' => 'fa fa-whatsapp']);
     }
 }

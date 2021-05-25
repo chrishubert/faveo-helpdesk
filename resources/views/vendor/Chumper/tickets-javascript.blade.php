@@ -91,6 +91,14 @@ $path = public_path();
                         d.options = "{{$inputs}}";
                     }
                 },
+                "columns": [
+                    {data: 'id'},
+                    {data: 'title'},
+                    {data: 'ticket_number'},
+                    {data: 'c_uname'},
+                    {data: 'a_uname'},
+                    {data: 'updated_at2'}
+                ],
                 "aaSorting": [[5, "desc"]],
                 "columnDefs": [
                     { "orderable": false, "targets": 0},
@@ -99,7 +107,7 @@ $path = public_path();
                     {
                         "aTargets": [0],
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            var str = sData;
+                            var str = oData.color;
                             var start = str.indexOf('#');
                             var color = hexToRgbA(str.substr(start, 7));
                                 $(nTd).css("border-left", "5px solid "+color);
@@ -107,9 +115,9 @@ $path = public_path();
                     } 
                 ],
                 "fnCreatedRow": function (nRow, aData, iDataIndex) {
-                    var str = aData[0];
-                    var length = aData[2].indexOf('*') - aData[2].indexOf('$');
-                    var p = aData[2].substr(aData[2].indexOf('$')+1, length-1);
+                    var str = aData.id;
+                    var length = aData.ticket_number.indexOf('*') - aData.ticket_number.indexOf('$');
+                    var p = aData.ticket_number.substr(aData.ticket_number.indexOf('$')+1, length-1);
                     $("td", nRow).attr('title', "{!! Lang::get('lang.ticket-has-x-priority', ['priority' => '"+p+"']) !!}");
                     if (str.search("#000") == -1) {
                         $("td", nRow).css({"background-color": "#F3F3F3", "font-weight": "600", "border-bottom": "solid 0.5px #ddd", "border-right": "solid 0.5px #F3F3F3"});

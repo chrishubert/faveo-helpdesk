@@ -18,6 +18,7 @@
          */
         Route::group(['prefix' => 'helpdesk'], function () {
             Route::post('create', '\App\Api\v1\ApiController@createTicket');
+            Route::post('create_qisqus', '\App\Api\v1\ApiController@createQiscusTicket')->name('apiv1helpdeskcreate_qisqus');
             Route::post('reply', '\App\Api\v1\ApiController@ticketReply');
             Route::post('edit', '\App\Api\v1\ApiController@editTicket');
             Route::post('delete', '\App\Api\v1\ApiController@deleteTicket');

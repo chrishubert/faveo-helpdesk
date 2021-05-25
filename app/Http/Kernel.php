@@ -56,7 +56,7 @@ class Kernel extends HttpKernel
         'roles'           => \App\Http\Middleware\CheckRole::class,
         'role.agent'      => \App\Http\Middleware\CheckRoleAgent::class,
         'role.user'       => \App\Http\Middleware\CheckRoleUser::class,
-        'api'             => \App\Http\Middleware\ApiKey::class,
+        'api_auth'             => \App\Http\Middleware\ApiKey::class,
         'jwt.auth'        => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
         'jwt.refresh'     => \Tymon\JWTAuth\Middleware\RefreshToken::class,
         'jwt.authOveride' => \App\Http\Middleware\JwtAuthenticate::class,

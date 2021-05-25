@@ -270,7 +270,7 @@
                                         </div>
                                         <div class="form-group has-feedback @if(isset($errors)) {!! $errors->has('password') ? 'has-error' : '' !!} @endif">
                                             {!! Form::password('password',['placeholder'=>Lang::get('lang.password'),'class' => 'form-control']) !!}
-                                            <?php \Event::fire('auth.login.form'); ?>
+                                            <?php \Event::dispatch('auth.login.form'); ?>
                                             <a href="{{url('password/email')}}" style="font-size: .8em" class="pull-left">{!! Lang::get('lang.forgot_password') !!}</a>
                                         </div>
                                         <div class="form-group pull-left">

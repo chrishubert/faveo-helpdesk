@@ -112,15 +112,7 @@ return [
       |
      */
     'log' => 'daily',
-    /*
-      |---------------------------------------------------------------------------------
-      | Bugsnag error reporting
-      |-----------------------------------------------------------------------------------
-      |Accepts true or false as a value. It decides whether to send the error
-      |to FAVEO team when any exception/error occurs or not. True value of this variable will
-      |allow application to send error reports to FAVEO team's bugsnag log.
-     */
-    'bugsnag_reporting' => env('APP_BUGSNAG', true),
+
     /*
       |--------------------------------------------------------------------------
       | Autoloaded Service Providers
@@ -169,7 +161,6 @@ return [
         'App\Providers\ConfigServiceProvider',
         'App\Providers\ComposerServiceProvider',
         'Propaganistas\LaravelPhone\LaravelPhoneServiceProvider',
-        'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
         'Vsmoraes\Pdf\PdfServiceProvider',
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'Chumper\Datatable\DatatableServiceProvider',
@@ -186,7 +177,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\FaveoLog\LaravelLogViewerServiceProvider::class,
         App\FaveoStorage\StorageServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class,
+        Yajra\DataTables\DatatablesServiceProvider::class,
         \App\Api\ApiServiceProvider::class,
 
     ],
@@ -235,7 +226,6 @@ return [
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
         'phone'        => 'The :attribute field contains an invalid number.',
-        'Bugsnag'      => 'Bugsnag\BugsnagLaravel\BugsnagFacade',
         'PDF'          => 'Vsmoraes\Pdf\PdfFacade',
         'Gravatar'     => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
         'UTC'          => 'App\Http\Controllers\Agent\helpdesk\TicketController',
@@ -255,7 +245,7 @@ return [
         'Socialite'    => Laravel\Socialite\Facades\Socialite::class,
         'UnAuth'       => 'App\Http\Controllers\Client\helpdesk\UnAuthController',
         'Finder'       => App\Helper\Finder::class,
-        'Datatables'   => Yajra\Datatables\Facades\Datatables::class,
+        'Datatables'   => Yajra\DataTables\Facades\Datatables::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
     ],
 ];

@@ -26,6 +26,6 @@ class CreateTemplateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_types');
+        Schema::drop('template_types');
     }
 }

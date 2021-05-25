@@ -28,7 +28,7 @@ class TokenAuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('api');
+        $this->middleware('api_auth');
         $this->middleware('jwt.authOveride')->only('getAuthenticatedUser');
         $PhpMailController = new PhpMailController();
         $this->PhpMailController = $PhpMailController;

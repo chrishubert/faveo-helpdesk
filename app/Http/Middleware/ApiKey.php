@@ -26,6 +26,7 @@ class ApiKey
     public function handle($request, Closure $next)
     {
         $set = $this->setting->where('id', '1')->first();
+        // dd($set);
         if ($set->api_key_mandatory == 1) {
             if ($set->api_enable == 1) {
                 $key = $set->api_key;
@@ -50,10 +51,6 @@ class ApiKey
 
     public function test($v1, $v2)
     {
-        if ($v1 == $v2) {
-            return '1';
-        } else {
-            return '0';
-        }
+        return ($v1 == $v2) ?  '1' : '0';
     }
 }

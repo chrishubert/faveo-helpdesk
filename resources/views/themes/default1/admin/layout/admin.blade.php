@@ -96,14 +96,14 @@
 
         <?php
         $replacetop = 0;
-        $replacetop = \Event::fire('service.desk.admin.topbar.replace', array());
+        $replacetop = \Event::dispatch('service.desk.admin.topbar.replace', array());
         if (count($replacetop) == 0) {
             $replacetop = 0;
         } else {
             $replacetop = $replacetop[0];
         }
         $replaceside = 0;
-        $replaceside = \Event::fire('service.desk.admin.sidebar.replace', array());
+        $replaceside = \Event::dispatch('service.desk.admin.sidebar.replace', array());
         if (count($replaceside) == 0) {
             $replaceside = 0;
         } else {
@@ -137,7 +137,7 @@
                         </a>
                     </li>
                     @else
-                    <?php \Event::fire('service.desk.admin.topbar', array()); ?>
+                    <?php \Event::dispatch('service.desk.admin.topbar', array()); ?>
                     @endif
                 </ul>
 
@@ -691,7 +691,7 @@
                                 </a>
                             </li>
                             @endif
-                            <?php \Event::fire('service.desk.admin.sidebar', array()); ?>
+                            <?php \Event::dispatch('service.desk.admin.sidebar', array()); ?>
                         </ul>
                     </nav>
                 </section>

@@ -217,6 +217,9 @@ class ApiController extends Controller
                 $user_code = $user_id;
             }
 
+            dump($user_phone);
+            dump($user_code);
+
             $this->request->merge([
                 'subject' => "Qiscus ticket from $user_id",
                 'body' => $qiscusBody['notes'] ?? '',

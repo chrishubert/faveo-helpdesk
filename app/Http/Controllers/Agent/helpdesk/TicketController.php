@@ -143,6 +143,9 @@ class TicketController extends Controller
                     return Redirect()->back()->with($data)->withInput($request->except('password'));
                 } else {
                     $code = CountryCode::select('phonecode')->where('phonecode', '=', $phonecode)->get();
+                    dump($phonecode);
+                    dump($code);
+
                     if (!count($code)) {
                         $data = [
                             'fails' => Lang::get('lang.incorrect-country-code-error'),

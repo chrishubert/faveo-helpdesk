@@ -202,8 +202,6 @@ class ApiController extends Controller
             else
                 $assignee_id = 1;
 
-            dump($assignee_id);
-
             $PhpMailController = new \App\Http\Controllers\Common\PhpMailController();
             $NotificationController = new \App\Http\Controllers\Common\NotificationController();
             $core = new CoreTicketController($PhpMailController, $NotificationController);

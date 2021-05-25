@@ -110,8 +110,6 @@ class TicketController extends Controller
 
             $assignto = ($request->input('assignto')) ? $request->input('assignto') : null;
 
-            dump($assignto);
-
             $subject = $request->input('subject');
             $body = $request->input('body');
             $priority = $request->input('priority');
@@ -121,14 +119,13 @@ class TicketController extends Controller
 
             $source_name = $request->input('source') ? $request->input('source') : 'agent';
             $source = Ticket_source::where('name', '=', $source_name)->first();
+            $source = $source ?  $source : Ticket_source::where('name', '=', 'Agent')->first();
 
             $headers = null;
             $help = Help_topic::where('id', '=', $helptopic)->first();
             $form_data = $request->except('name', 'phone', 'email', 'subject', 'body', 'helptopic', '_wysihtml5_mode', '_token', 'mobile', 'code', 'priority', 'attachment', 'first_name', 'last_name', 'sla', 'duedate', 'assignto', 'files'); //added "files" in exception list because some genius has added a new editor 'summernote' to impress his boss and screwed the functional code with his genius ability. Hence to make world capable of handling this genius's work I am adding a shitty workaround for it. After looking for solution everywhere and referring to https://stackoverflow.com/questions/59938588/summernote-adds-files-field-to-post
             $auto_response = 0;
             $status = 1;
-
-            dump(1);
 
             if ($phone != null || $mobile_number != null) {
                 $location = GeoIP::getLocation();
@@ -160,6 +157,7 @@ class TicketController extends Controller
                     }
                 }
             }
+
             //create user
             $result = $this->create_user($email, $fullname, $subject, $body, $phone, $phonecode, $mobile_number, $helptopic, $sla, $priority, $source->id, $headers, $help->department, $assignto, $form_data, $auto_response, $status);
 

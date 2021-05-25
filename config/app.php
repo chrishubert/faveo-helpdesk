@@ -245,7 +245,7 @@ return [
         'Socialite'    => Laravel\Socialite\Facades\Socialite::class,
         'UnAuth'       => 'App\Http\Controllers\Client\helpdesk\UnAuthController',
         'Finder'       => App\Helper\Finder::class,
-        'Datatables'   => Yajra\DataTables\Facades\Datatables::class,
+        'Datatables'   => Yajra\DataTables\Facades\DataTables::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
     ],
 ];

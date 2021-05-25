@@ -199,6 +199,7 @@ class ApiController extends Controller
             // Get Assignee
             if ($agent_email) {
                 $agent = User::where('email', $agent_email)->first();
+                dd($agent);
                 $assignee_id = $agent ? $agent->id : 1;
             } else
                 $assignee_id = 1;

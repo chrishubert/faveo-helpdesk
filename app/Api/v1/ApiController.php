@@ -195,7 +195,6 @@ class ApiController extends Controller
             $qiscusBody = json_decode(request()->getContent(), true);
 
             $agent_email = $qiscusBody["agent"]["email"] ?? null;
-
             // Get Assignee
             if ($agent_email && $agent = User::where('email', $agent_email)->first())
                 $assignee_id = $agent->id;

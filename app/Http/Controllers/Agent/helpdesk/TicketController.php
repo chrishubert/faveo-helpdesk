@@ -641,7 +641,7 @@ class TicketController extends Controller
         $ticket_creator = $username;
         $checkemail = $this->checkEmail($unique);
         $company = $this->company();
-        if ($checkemail == false) {
+        if ($unique == null || $checkemail == false) {
             if ($mobile_number != '' || $mobile_number != null) {
                 $check_mobile = $this->checkMobile($mobile_number);
                 if ($check_mobile == true) {
@@ -3250,7 +3250,7 @@ class TicketController extends Controller
 
                 return '<span style="display:none">' . $updated . '</span>' . UTC::usertimezone($updated);
             })
-            ->rawColumns(['assign_user_name','created_at','id','priority','ticket_number','title','updated_at','user_name'])
+            ->rawColumns(['assign_user_name', 'created_at', 'id', 'priority', 'ticket_number', 'title', 'updated_at', 'user_name'])
             ->make();
     }
 }

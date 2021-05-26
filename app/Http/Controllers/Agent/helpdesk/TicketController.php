@@ -2814,7 +2814,7 @@ class TicketController extends Controller
                     }
                 }
             })
-            ->rawColumns(['id','a_uname','c_uname','id','title','ticket_number'])
+            ->rawColumns(['id', 'a_uname', 'c_uname', 'id', 'title', 'ticket_number'])
             ->make();
     }
 
@@ -3250,6 +3250,7 @@ class TicketController extends Controller
 
                 return '<span style="display:none">' . $updated . '</span>' . UTC::usertimezone($updated);
             })
+            ->rawColumns(['assign_user_name','created_at','id','priority','ticket_number','title','updated_at','user_name'])
             ->make();
     }
 }

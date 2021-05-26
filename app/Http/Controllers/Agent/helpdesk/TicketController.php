@@ -1052,13 +1052,11 @@ class TicketController extends Controller
                 $form_name = $form->formname;
             }
             foreach ($form_data as $key => $form_details) {
-                if (!is_array($form_details)) {
-                    $form_value = new Ticket_Form_Data();
-                    $form_value->ticket_id = $id;
-                    $form_value->title = $key;
-                    $form_value->content = $form_details ?? '-';
-                    $form_value->save();
-                }
+                $form_value = new Ticket_Form_Data();
+                $form_value->ticket_id = $id;
+                $form_value->title = $key;
+                $form_value->content = is_array($form_details) ? json_encode($form_details): $form_details;
+                $form_value->save();
             }
         }
         \Event::dispatch('after.ticket.created', [['ticket' => $ticket, 'form_data' => $form_data]]);

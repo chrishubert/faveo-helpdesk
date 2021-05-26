@@ -800,7 +800,7 @@
             <script>
             $(function () {
             //Add text editor
-                $("textarea").summernote({
+                $("textarea").not('.plaintextarea').summernote({
                     height: 300,
                     tabsize: 2,
                     toolbar: [

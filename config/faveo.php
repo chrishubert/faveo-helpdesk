@@ -9,6 +9,7 @@ return [
             '24 Hours' => '24 Hours',
             '36 Hours' => '36 Hours',
             '48 Hours' => '48 Hours',
+            '72 Hours' => '72 Hours',
         ],
     ],
 ];

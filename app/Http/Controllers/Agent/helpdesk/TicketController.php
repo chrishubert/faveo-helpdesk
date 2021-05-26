@@ -38,6 +38,8 @@ use App\Model\helpdesk\Utility\Date_time_format;
 use App\Model\helpdesk\Utility\Timezones;
 use App\User;
 use Auth;
+use Carbon\Carbon;
+use Cmixin\BusinessTime;
 use Crypt;
 use DB;
 use Exception;
@@ -51,6 +53,7 @@ use Input;
 use Lang;
 use Mail;
 use PDF;
+use Spatie\OpeningHours\OpeningHours;
 use UTC;
 
 /**
@@ -1034,7 +1037,13 @@ class TicketController extends Controller
 
         $sla_plan = Sla_plan::where('id', '=', $sla)->first();
         $ovdate = $ticket->created_at;
-        $new_date = date_add($ovdate, date_interval_create_from_date_string($sla_plan->grace_period));
+        if ($sla_plan->business_hours) {
+            BusinessTime::enable(Carbon::class, json_decode($sla_plan->business_hours, true));
+            $new_date = Carbon::createFromFormat('Y-m-d H:i:s', $ovdate)
+                ->addOpenTime($sla_plan->grace_period);
+        } else {
+            $new_date = date_add($ovdate, date_interval_create_from_date_string($sla_plan->grace_period));
+        }
         $ticket->duedate = $new_date;
         $ticket->save();
 

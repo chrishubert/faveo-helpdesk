@@ -883,6 +883,7 @@ return [
     'group_cannot_delete'                                                                    => 'Group cannot delete',
     'failed_to_load_the_page'                                                                => 'Failed to load the page',
     'list_of_groups'                                                                         => 'List of groups',
+    'business_hours_field_title'                                                             => 'Business Hours - Leave Empty if not applicable, See documentation for usage',
     /*
       |--------------------------------------
       |  SMTP Page

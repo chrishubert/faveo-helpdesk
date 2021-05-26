@@ -29,8 +29,9 @@ class SlaUpdate extends Request
     public function rules()
     {
         return [
-            'name'         => 'required|max:50',
+            'name' => 'required|max:50',
             'grace_period' => 'required',
+            'business_hours' => 'json',
         ];
     }
 }

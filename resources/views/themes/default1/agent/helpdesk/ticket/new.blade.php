@@ -182,8 +182,8 @@ class="active"
                             <!-- sla plan -->
                             <div class="form-group">
                                 <label>{!! Lang::get('lang.sla_plan') !!}:</label>
-                                <?php $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->select('grace_period', 'id')->get(); ?>
-                                {!! Form::select('sla', ['SLA'=>$sla_plan->pluck('grace_period','id')->toArray()],null,['class' => 'form-control select']) !!}
+                                <?php $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('status', '=', 1)->select('name', 'id')->get(); ?>
+                                {!! Form::select('sla', $sla_plan->pluck('name','id')->toArray(),null,['class' => 'form-control select']) !!}
                             </div>
                         </div>
                         <div class="col-md-3">

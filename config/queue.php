@@ -60,9 +60,11 @@ return [
             'encrypt' => true,
         ],
         'redis' => [
-            'driver' => '',
-            'queue'  => '',
-            'expire' => 60,
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue' => env('REDIS_QUEUE', 'default'),
+            'retry_after' => 90,
+            'block_for' => null,
         ],
     ],
     /*

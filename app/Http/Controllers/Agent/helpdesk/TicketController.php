@@ -2724,6 +2724,10 @@ class TicketController extends Controller
     public static function genreateTableJson($tickets)
     {
         return \Datatables::of($tickets)
+            ->filter(function ($query) {
+                if (request()->has('search'))
+                    $query->where('ticket_number', 'like', "%" . request('search')["value"] . "%");
+            })
             ->editColumn('id', function ($tickets) {
                 $rep = ($tickets->last_replier == 'client') ? '#F39C12'
                     : '#000';

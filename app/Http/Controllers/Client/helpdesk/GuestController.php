@@ -360,7 +360,7 @@ class GuestController extends Controller
         $tickets = Tickets::where('id', '=', \Crypt::decrypt($id))->first();
         $thread = Ticket_Thread::where('ticket_id', '=', \Crypt::decrypt($id))->first();
 
-        return view('themes.default1.client.helpdesk.ckeckticket', compact('id', 'common_setting', 'tickets', $thread));
+        return view('themes.default1.client.helpdesk.ckeckticket', compact('id', 'common_setting', 'tickets', 'thread'));
     }
 
     /**

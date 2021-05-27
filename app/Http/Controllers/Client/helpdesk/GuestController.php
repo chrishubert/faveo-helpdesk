@@ -49,7 +49,7 @@ class GuestController extends Controller
         $this->middleware('board');
         $this->PhpMailController = $PhpMailController;
         // checking authentication
-        $this->middleware('auth');
+        $this->middleware('auth')->except('get_ticket_email');
     }
 
     /**
@@ -354,8 +354,10 @@ class GuestController extends Controller
         $common_setting = $common_settings->select('status')
                 ->where('option_name', '=', 'user_set_ticket_status')
                 ->first();
+        $tickets = App\Model\helpdesk\Ticket\Tickets::where('id', '=', \Crypt::decrypt($id))->first();
+        $thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Crypt::decrypt($id))->first();
 
-        return view('themes.default1.client.helpdesk.ckeckticket', compact('id', 'common_setting'));
+        return view('themes.default1.client.helpdesk.ckeckticket', compact('id', 'common_setting','tickets',$thread));
     }
 
     /**

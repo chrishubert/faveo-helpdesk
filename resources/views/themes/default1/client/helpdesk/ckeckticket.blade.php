@@ -1,10 +1,5 @@
 @extends('themes.default1.client.layout.client')
 @section('content')               
-<?php
-$tickets = App\Model\helpdesk\Ticket\Tickets::where('id', '=', \Crypt::decrypt($id))->first();
-$thread = App\Model\helpdesk\Ticket\Ticket_Thread::where('ticket_id', '=', \Crypt::decrypt($id))->first();
-//$user = App\User::where('id','=',$id1)->first();
-?>
 <!-- Main content -->
 <style type="text/css">
     .caret {
